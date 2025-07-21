@@ -3,6 +3,7 @@ import { ProductCarousel } from './ProductCarousel'
 import { AIFollowUpQuestions } from './AIFollowUpQuestions'
 import { PersistentSearchBar } from './PersistentSearchBar'
 import { ComparisonToggle } from './ComparisonToggle'
+import { ComparisonTable } from './ComparisonTable'
 import { Badge } from './ui/badge'
 
 // Mock data for demonstration
@@ -14,6 +15,7 @@ const mockProducts = [
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
     bestFor: "Sensitive skin and babies with zero fragrances or dyes",
     price: "$12.99",
+    priceValue: 12.99,
     features: ["Plant-based formula", "Hypoallergenic", "EPA Safer Choice", "Cruelty-free"],
     certifications: ["EWG Verified", "USDA BioPreferred"],
     rating: 4.6,
@@ -26,6 +28,7 @@ const mockProducts = [
     image: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=400&h=400&fit=crop",
     bestFor: "Eco-conscious families seeking powerful cleaning without compromise",
     price: "$9.99",
+    priceValue: 9.99,
     features: ["Zero fragrance", "Plant & mineral based", "Biodegradable", "Concentrated formula"],
     certifications: ["Cradle to Cradle Certified", "Leaping Bunny"],
     rating: 4.4,
@@ -38,6 +41,7 @@ const mockProducts = [
     image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=400&fit=crop",
     bestFor: "Natural cleaning with minimal ingredients for maximum transparency",
     price: "$15.99",
+    priceValue: 15.99,
     features: ["5 simple ingredients", "Unscented", "No optical brighteners", "Made in USA"],
     certifications: ["EWG Verified", "Made Safe"],
     rating: 4.7,
@@ -111,6 +115,16 @@ export function SearchResultsPage() {
             onToggle={setIsComparisonMode}
           />
         </div>
+
+        {/* Detailed Comparison Table */}
+        {isComparisonMode && (
+          <div className="mb-8">
+            <ComparisonTable 
+              products={mockProducts}
+              isVisible={isComparisonMode}
+            />
+          </div>
+        )}
       </div>
 
       {/* Persistent Search Bar */}
